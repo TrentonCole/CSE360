@@ -74,7 +74,16 @@ public class SimpleList {
 	//this removes an element of the array.
 	
 	public void remove(int x) {
-	
+
+		if(count < (list.length/4)) {
+			int calc = list.length - (list.length/4);
+			int[] temp = new int[calc]; 
+			for(int i = 0; i < list.length; i++) {
+				temp[i] = list[i];
+			}
+			list = temp;
+		}
+		
 		//this is to find the index of the element that is being removed.
 		
 		int index = search(x);
@@ -152,6 +161,42 @@ public class SimpleList {
 		stringList = stringList.trim();
 		return stringList;
 	}
+	
+	//returns the first element in the list
+	int first() {
+		if(list == null) {
+			return -1;
+		}
+		return list[0];
+	}
+	//returns the last element in the list
+	int last() {
+		if(list == null) {
+			return -1;
+		}
+		return list[count-1];
+	}
+	//return length of the list
+	int size() {
+		return list.length;
+	}
+	//this adds an element to the end and increases size by 50% is the 
+	//list is full
+	 void append(int x) {
+ 
+			if(count >= list.length) {
+				int calc = list.length + (list.length/2);
+				int[] temp = new int[calc];
+				for(int i = 0; i < list.length; i++) {
+					temp[i] = list[i];
+				}
+				list = temp;
+			}
+			
+			list[count] = x;
+			count++;
+	}
+	
 	
 }
 
