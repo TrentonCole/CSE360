@@ -35,11 +35,19 @@ public class SimpleList {
 	public void add(int x) {
 		count++;
 		
-		//this is if we count one to many
-	  
-		if(count > 10) {
-		  count--;
+		if(count == list.length) {
+			int calc = list.length + (list.length/2);
+			int[] temp = new int[calc]; 
+			for(int i = 0; i < list.length; i++) {
+				temp[i] = list[i];
+			}
+			list = temp;
 		}
+		
+		//this is if we count one to many
+		//if(count > 10) {
+		  //count--;
+		//}
 	  
 	  //this is if there is no elements in the array
 	  
